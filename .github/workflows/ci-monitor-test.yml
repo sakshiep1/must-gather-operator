@@ -26,7 +26,7 @@ jobs:
 
       - name: gofmt
         run: |
-          fmt_out="$(gofmt -l .)"
+          fmt_out="$(gofmt -l $(find . -name '*.go' -not -path './vendor/*'))"
           if [ -n "$fmt_out" ]; then
             echo "The following files are not gofmt-formatted:"
             echo "$fmt_out"
