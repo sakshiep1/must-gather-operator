@@ -1,0 +1,34 @@
+name: ci-monitor-test
+
+# Minimal CI workflow added solely to test the OAPE CI-Monitor tooling
+# (openshift-eng/oape-ai-e2e#67) against this personal fork.
+# Safe to remove once CI-Monitor testing is complete.
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: go build
+        run: go build ./...
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: gofmt
+        run: |
+          fmt_out="$(gofmt -l .)"
+          if [ -n "$fmt_out" ]; then
+            echo "The following files are not gofmt-formatted:"
+            echo "$fmt_out"
+            exit 1
+          fi
