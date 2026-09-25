@@ -17,8 +17,8 @@ const (
 	// MaxSFTPValidationRetries is the maximum number of retries for transient SFTP validation errors
 	MaxSFTPValidationRetries = 3
 
-	// ValidationImageStream represents the validation type for ImageStream
-        ValidationImageStream = "ImageStream"
+	// ValidationImageStream represents the validation type for ImageStream (edited concurrently)
+	ValidationImageStream = "ImageStream-concurrent-edit"
 
 	// DefaultMustGatherImageEnv represents the environment variable for the default must-gather image
 	DefaultMustGatherImageEnv = "DEFAULT_MUST_GATHER_IMAGE"
