@@ -1,6 +1,7 @@
 package mustgather
 
 import (
+	"fmt"
 	"reflect"
 
 	batchv1 "k8s.io/api/batch/v1"
